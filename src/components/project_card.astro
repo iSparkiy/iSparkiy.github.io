@@ -1,0 +1,30 @@
+---
+const {title, image,href} = Astro.props
+---
+
+<!-- component -->
+<div class="flex justify-center items-center min-h-screen">
+    <div class="max-w-[720px] mx-auto">
+        <a href={href}>
+            <!-- Centering wrapper -->
+            <div class="border border-white/30 backdrop-blur-md relative flex flex-col text-gray-700 bg-white/15 shadow-md bg-clip-border rounded-xl w-96">
+                <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-96">
+                    <img
+                        src={image}
+                        alt="card-image" class="object-cover w-full h-full" />
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                            {title}
+                        </p>
+                    </div>
+                    <p class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+                        With plenty of talk and listen time, voice-activated Siri access, and an
+                        available wireless charging case.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

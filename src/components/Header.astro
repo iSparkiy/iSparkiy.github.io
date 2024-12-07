@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+---
+
+<header class="sticky flex justify-center top-0 z-[50] pt-5">
+    <div id="header" class="bg-white/10 opacity-100 w-[80vw] md:w-[60vw] max-w-[800px] md rounded-full border backdrop-blur-xl flex items-center gap-2 p-2 justify-between ">
+        <div class="flex gap-2 items-center font-semibold text-violet-300">
+            <Image src="https://www.pokepedia.fr/images/8/88/Sparky.jpg" alt="my profile" width={10} height={10} class="size-9 rounded-full object-cover"/>
+            <h3>Sparkiy</h3>
+        </div>
+        <ul class="flex gap-5 invisible md:visible">
+            <li><a href="/">home</a></li>
+            <li><a href="/projects">projects</a></li>
+            <li><a href="/contact">contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<style>
+    h6{
+        @apply text-white/80 
+    }
+</style>

@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/layout.astro";
+import Header from "../../components/Header.astro";
+import ProjectCard from "../../components/project_card.astro"
+const posts = import.meta.glob('/src/pages/projects/*.md', { eager: true });
+
+const postsData = Object.entries(posts).map(([path, post]) => {
+  const { frontmatter } = post as { frontmatter: { title: string; date: string; description?: string; image?: string} };
+  return {
+    ...frontmatter,
+    slug: path.split('/').pop()?.replace('.md', ''),
+  };
+});
+
+---
+<Layout>
+    <Header/>
+    <h1 class="font-bold text-6xl mt-16">Projetcs</h1>
+    <div class="grid gap-6">
+        {postsData.map((post) => (
+                <ProjectCard title={post.title} image={post.image} href={`/projects/${post.slug}`}/>
+          ))}
+    </div>
+</Layout>

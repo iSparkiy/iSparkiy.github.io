@@ -1,0 +1,108 @@
+---
+import PythonBadge from "../components/badges/python.astro";
+import LuaBadge from "../components/badges/lua.astro";
+import CsBadge from "../components/badges/csharp.astro";
+import WebBadge from "../components/badges/web.astro";
+import UiBadge from "../components/badges/ui.astro";
+import { Image } from "astro:assets";
+---
+
+<section class="w-[80vw] max-w-[900px] border-b border-white/40 pb-[8rem] mb-[8rem]">
+    <div class="md:my-24 my-32 select-none flex-col md:flex-row flex justify-between items-center">
+        <div class="z-[2] flex flex-col items-center md:inline-block">
+            <div class="flex flex-col items-center md:items-start">
+                <div class="relative">
+                    <h1 id="heroTitle" class="h-[1em] relative inline-block font-bold text-8xl text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-200" id="heroTitle">Hi</h1>
+                    <span class="absolute top-0 bottom-0 w-[0.1rem] bg-purple-200 animate-better-pulse"></span>
+                </div>
+                <p class="text-purple-100/90">I'm a developer, or at least i guess it...</p>
+                <span>My knowledge:</span>
+            </div>
+            <div class="flex md:w-[23rem] w-[16rem] h-[4.5rem] items-center" id="scroll">
+                <div class="animate-loop-scroll flex">
+                    <LuaBadge />
+                    <PythonBadge />
+                    <CsBadge />
+                    <WebBadge />
+                    <UiBadge/>
+                </div>
+                <div class="animate-loop-scroll flex">
+                    <LuaBadge />
+                    <PythonBadge />
+                    <CsBadge />
+                    <WebBadge />
+                    <UiBadge/>
+                </div>
+            </div>
+        </div>
+        <img src="/gif.gif" width="400" height="400" />
+    </div>
+</section>
+
+
+<script>
+    const texts = ["Hi", "Hello!", "Welcome!", "¡Hola!"];
+    const htmlElement = document.getElementById("heroTitle");
+
+    let currentIndex = 0;      // Índice de la frase actual
+    let typingSpeed = 100;     // Velocidad de escritura en milisegundos
+    let deletingSpeed = 50;    // Velocidad de borrado
+    let stayTime = 2000;       // Tiempo que cada frase permanece antes de empezar a borrarse
+
+    function typePhrase() {
+      const phrase = texts[currentIndex];
+      let charIndex = 0;
+      htmlElement.textContent = ''; // Limpiar el contenido antes de empezar a escribir
+
+      // Escribir la frase letra por letra
+      function typeCharacter() {
+        if (charIndex < phrase.length) {
+          htmlElement.textContent += phrase[charIndex];
+          charIndex++;
+          setTimeout(typeCharacter, typingSpeed); // Escribir la siguiente letra después de `typingSpeed`
+        } else {
+          // Una vez que la frase está escrita, espera `stayTime` y luego empieza a eliminarla
+          setTimeout(deletePhrase, stayTime);
+        }
+      }
+
+      typeCharacter(); // Iniciar la escritura de la frase
+    }
+
+    function deletePhrase() {
+      const phrase = texts[currentIndex];
+      let charIndex = phrase.length;
+
+      // Eliminar la frase letra por letra
+      function deleteCharacter() {
+        if (charIndex > 0) {
+          htmlElement.textContent = phrase.slice(0, charIndex - 1);
+          charIndex--;
+          setTimeout(deleteCharacter, deletingSpeed); // Eliminar la siguiente letra después de `deletingSpeed`
+        } else {
+          // Una vez que la frase está completamente eliminada, pasa a la siguiente
+          currentIndex = (currentIndex + 1) % texts.length;  // Cambiar al siguiente índice de frase
+          typePhrase(); // Escribir la nueva frase
+        }
+      }
+
+      deleteCharacter(); // Iniciar la eliminación de la frase
+    }
+
+    // Iniciar el proceso con la primera frase
+    typePhrase();
+</script>
+
+<style>
+    #scroll {
+        mask-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 15%,
+            rgba(0, 0, 0, 1) 85%,
+            rgba(0, 0, 0, 0) 100%
+        );
+
+
+    }
+</style>
