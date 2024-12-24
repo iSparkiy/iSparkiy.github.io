@@ -3,8 +3,37 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	darkMode: 'selector',
+
 	theme: {
 		extend: {
+			colors: {
+				text: {
+					light:'#120d0d',
+					dark:'#f2eded'
+				},
+		
+				background: {
+					light: '#f2f0ee',
+					dark: '#110f0d'
+				},
+		
+				primary: {
+					light: '#533a37',
+					dark: '#c8afac'
+				},
+		
+				secondary: {
+					light: '#405e46',
+					dark: '#a1bfa7',
+				},
+		
+				accent: {
+					light: '#5b8586',
+					dark: '#79a3a4'
+				},
+			},	
+
 			fontFamily: {
 				onest: ['onest', ...defaultTheme.fontFamily.sans],
 			},

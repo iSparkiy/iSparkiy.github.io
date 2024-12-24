@@ -2,17 +2,15 @@
 import { Image } from "astro:assets";
 ---
 
-<header class="sticky flex justify-center top-0 z-[50] pt-5">
-    <div id="header" class="bg-white/10 opacity-100 w-[80vw] md:w-[60vw] max-w-[800px] md rounded-full border backdrop-blur-xl flex items-center gap-2 p-2 justify-between ">
-        <div class="flex gap-2 items-center font-semibold text-violet-300">
-            <Image src="https://www.pokepedia.fr/images/8/88/Sparky.jpg" alt="my profile" width={10} height={10} class="size-9 rounded-full object-cover"/>
-            <h3>Sparkiy</h3>
-        </div>
-        <ul class="flex gap-5 invisible md:visible">
-            <li><a href="/">home</a></li>
-            <li><a href="/projects">projects</a></li>
-            <li><a href="/contact">contact</a></li>
+<header class="flex justify-center z-[50] fixed top-0 backdrop-blur-xl w-[100vw] dark:bg-black/25 bg-black/5">
+    <div id="header" class="h-16 opacity-100 flex items-center gap-12 p-2 justify-between">
+        <h3 class="font-extrabold text-primary-light dark:text-primary-dark text-base">Sparkiy</h3>
+        <ul class="flex gap-4">
+            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light"><a href="/">home</a></li>
+            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light"><a href="/projects">projects</a></li>
+            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light"><a href="/contact">contact</a></li>
         </ul>
+        <button class="material-symbols-rounded notranslate hover-transform hover:scale-[110%]" id="theme-toggle">light_mode</button>
     </div>
 </header>
 
@@ -20,4 +18,9 @@ import { Image } from "astro:assets";
     h6{
         @apply text-white/80 
     }
+    .hover-transform {
+        transition: transform 100ms ease;
+    }
 </style>
+
+<script src="../scripts/themeToggle.js"></script>
