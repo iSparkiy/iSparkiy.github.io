@@ -3,12 +3,12 @@ import { Image } from "astro:assets";
 ---
 
 <header class="flex justify-center z-[50] fixed top-0 backdrop-blur-xl w-[100vw] dark:bg-black/25 bg-black/5">
-    <div id="header" class="h-16 opacity-100 flex items-center gap-12 p-2 justify-between">
-        <h3 class="font-extrabold text-primary-light dark:text-primary-dark text-base">Sparkiy</h3>
-        <ul class="flex gap-4">
-            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light"><a href="/">home</a></li>
-            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light"><a href="/projects">projects</a></li>
-            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light"><a href="/contact">contact</a></li>
+    <div id="header" class="h-14 opacity-100 flex items-center gap-12 p-2 justify-between">
+        <a href="/" class="font-extrabold text-primary-light dark:text-primary-dark text-base">Sparkiy</a>
+        <ul class="flex gap-4 dark:font-medium font-semibold">
+            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light hover:transition-colors "><a href="/">about</a></li>
+            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light hover:transition-colors"><a href="/projects">projects</a></li>
+            <li class=" dark:hover:text-secondary-dark hover:text-secondary-light hover:transition-colors"><a href="/contact">contact</a></li>
         </ul>
         <button class="material-symbols-rounded notranslate hover-transform hover:scale-[110%]" id="theme-toggle">light_mode</button>
     </div>
@@ -21,6 +21,7 @@ import { Image } from "astro:assets";
     .hover-transform {
         transition: transform 100ms ease;
     }
+
 </style>
 
 <script src="../scripts/themeToggle.js"></script>

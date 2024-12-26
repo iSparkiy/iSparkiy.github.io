@@ -1,0 +1,16 @@
+---
+const {name} = Astro.props
+import GithubIcon from "../../icons/github_icon.astro"
+---
+<a href="https://github.com/iSparkiy" class="dark:bg-accent-dark/40 text-text-light dark:text-text-dark bg-accent-light/40 h-14 rounded-full flex gap-2 justify-center items-center px-4" id="button">
+    <span>{name}</span>
+    <GithubIcon/>
+    
+</a>
+
+<style>
+    a:hover {
+        transition: transform 0.3s ease;
+        @apply scale-95
+    }
+</style>

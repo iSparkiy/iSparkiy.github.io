@@ -1,0 +1,25 @@
+---
+const {name} = Astro.props
+---
+<a href="/">
+    <span class="font-medium text-text-dark dark:text-text-light">{name}</span>
+</a>
+
+<style>
+a {
+    @apply dark:bg-primary-dark dark:text-text-light text-text-dark bg-primary-light relative h-14 rounded-full flex gap-2 justify-center items-center px-4
+}
+a::before {
+  content: "";
+  transition: filter 0.3s ease;
+  @apply inset-2 absolute -z-10 dark:bg-primary-dark bg-primary-light rounded-full;
+  filter: blur(15px)
+}
+
+
+a:hover {
+    transition: transform 0.3s ease;
+    @apply scale-95
+}
+
+</style>

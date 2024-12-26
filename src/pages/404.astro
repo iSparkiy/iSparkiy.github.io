@@ -1,5 +1,59 @@
 ---
+import BackHomeButton from "../components/buttons/back_home_button.astro";
 import Layout from "../layouts/layout.astro";
 ---
 
-<Layout></Layout>
+<Layout>
+    <section class="inline-flex flex-col mt-[5rem] items-center text-center dark:text-text-dark text-text-light">
+        <img id="gif"src="/404_2.gif" class="h-[20rem] object-contain"/>
+        <h3 class="text-6xl font-extrabold  mb-2">Don't you know where you are?</h1>
+        <p class="text-3xl font-bold mb-14 opacity-80">'Cause me neither</p>
+        
+        <BackHomeButton name="Back to home"/>
+    </section>
+</Layout>
+
+
+<style>
+    h1 {
+        -webkit-background-clip: text;
+    }
+    h1::before {
+        content: "404";
+        @apply absolute text-9xl font-extrabold text-transparent  -z-10 opacity-50;
+        -webkit-background-clip: text;
+    }
+</style>
+
+<script>
+    const gifs = ["/404_2.gif", "/404_3.gif"];
+    let gif =  gifs[Math.floor(gifs.length * Math.random())];
+
+    document.getElementById("gif").setAttribute("src", gif)
+
+    const currentTheme = localStorage.getItem('theme') || "system";
+    let systemTheme =  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+    switch (currentTheme) {
+        case "dark":
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            break;
+        
+        case "light":
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            break;
+                
+        case "system":
+            if (systemTheme === "light") {
+                document.documentElement.classList.remove("dark");
+                document.documentElement.classList.add("light");
+            } else {
+                document.documentElement.classList.add("dark");
+                document.documentElement.classList.remove("light");
+            }
+            break;
+    }
+
+</script>
